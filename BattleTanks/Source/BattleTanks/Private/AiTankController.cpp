@@ -1,9 +1,19 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-#include"Tank.h"
+
 #include "AiTankController.h"
+#include "Tank.h"
+#include "public/Tank.h"
 
 
-ATank*AAiTankController::GetControlledTank()const {
+
+ void AAiTankController::Tick(float DeltaTime) {
+
+	Super::Tick(DeltaTime);
+	// Aim At the Player Tank position
+	GetControlledTank()->AimAt(GetPlayerTank()->GetActorLocation());
+}
+
+ATank* AAiTankController:: GetControlledTank() {
 
 	return Cast<ATank>(GetPawn());
 }
@@ -11,5 +21,18 @@ ATank*AAiTankController::GetControlledTank()const {
 void AAiTankController::BeginPlay()
 {
 	Super::BeginPlay();
+	
 }
 
+ATank* AAiTankController:: GetPlayerTank()
+{
+	auto PlayerTank = GetWorld()->GetFirstPlayerController()->GetPawn();
+	if (!PlayerTank) {
+		return nullptr;
+	}
+	return Cast<ATank>(PlayerTank);
+}
+
+
+
+ 
