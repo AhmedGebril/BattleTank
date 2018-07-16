@@ -21,9 +21,8 @@ public:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime)override;
 	void AimAtTheCrossHair();
-	bool GetSightRayHitLocation(FVector &HitLocation);
-	float CrossHairXlocation = 0.5;
-	float CrossHairYlocation = 0.333;
-	float Reach = 1000000;
-	
+	bool GetHitLocation(FVector& HitLocation) const;
+	float CrosshairXLocation = 0.5;
+	float CrosshairYLocation = 0.333;
+	float LineTraceRange = 1000000;
 };
