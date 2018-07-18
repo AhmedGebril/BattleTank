@@ -31,7 +31,7 @@ void ATankPlayerController::AimAtTheCrossHair( ) {
     //tell controlled tank to aim at this
 	if (GetHitLocation(HitLocation)){
 
-		UE_LOG(LogTemp, Warning, TEXT("Aiming Location:%s"), *HitLocation.ToString());
+		GetControlledTank()->AimAt(HitLocation);
 	}
 }
 	
