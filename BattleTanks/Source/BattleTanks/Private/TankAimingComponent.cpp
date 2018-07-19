@@ -15,16 +15,16 @@ UTankAimingComponent::UTankAimingComponent()
 }
 
 
-void UTankAimingComponent::AimAt(FVector HitLocation)
+void UTankAimingComponent::AimAt(FVector HitLocation,float LaunchSpeed)
 {
 	auto OurTank = GetOwner()->GetName();
 	auto BarrelLocation = Barrel->GetComponentLocation().ToString();
-	UE_LOG(LogTemp, Warning, TEXT("%s Is Aiming At %s from %s"), *OurTank, *HitLocation.ToString(),*BarrelLocation);
+	UE_LOG(LogTemp, Warning, TEXT("%s Is Aiming At %s from %s at projectile speed: %f"), *OurTank, *HitLocation.ToString(),*BarrelLocation,LaunchSpeed);
 }
 
 void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent * BarrelToSet)
 {
-	
+	Barrel = BarrelToSet;
 	
 }
 
