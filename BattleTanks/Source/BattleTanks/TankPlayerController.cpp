@@ -47,13 +47,14 @@ bool ATankPlayerController::GetHitLocation(FVector& HitLocation) const
 
 	FVector LookDirection;
 	FVector StartLocation;
-
+	// de-project the cords to the screen logout
 	bool bDeprojected = DeprojectScreenPositionToWorld(
 		ScreenLocation.X,
 		ScreenLocation.Y,
 		StartLocation,
 		LookDirection
 	);
+	//Get the Hit Location.
 	if (bDeprojected)
 	{
 		FHitResult HitResult;

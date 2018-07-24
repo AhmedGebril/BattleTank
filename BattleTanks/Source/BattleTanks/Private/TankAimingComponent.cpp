@@ -42,8 +42,8 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 {
 	auto AimRotator = AimDirection.Rotation();
 	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
-
-
+	auto DeltaRotator = AimRotator - BarrelRotator;
+	Barrel->Elevate(5);
 }
 
 void UTankAimingComponent::SetBarrelReference(UTankBarrel * BarrelToSet)
