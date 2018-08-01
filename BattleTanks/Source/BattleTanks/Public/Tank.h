@@ -2,10 +2,14 @@
 
 #pragma once
 #include "TankAimingComponent.h"
+#include "TankTurret.h"
+#include "TankBarrel.h"
 #include "CoreMinimal.h"
+#include "Projectile.h"
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
 
+class AProjectile;
 
 UCLASS()
 class BATTLETANKS_API ATank : public APawn
@@ -21,17 +25,27 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Setup)
 		void SetBarrelReference(UTankBarrel* BarrelToSet);
 
+	UFUNCTION(BlueprintCallable, Category = Setup)
+		void TurretReference(UTankTurret* TurretToSet);
+
+	UPROPERTY(EditAnywhere, category = Setup)
+		TSubclassOf<AProjectile> ProjectileBlueprint;
+	
+	UFUNCTION(BlueprintCallable, Category = Fire)
+		void Fire();
+
 protected:
 
 	UTankAimingComponent * AimingComponent;
+
+	AProjectile* projectile;
+
+	UTankBarrel* Barrel;
 
 
 private:
 	float LaunchSpeed = 1000000;
   
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
 
 public:	
 	// Called every frame

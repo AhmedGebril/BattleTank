@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "Tank.h"
 #include "TankAimingComponent.h"
+#include "Projectile.h"
 #include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
 
 
@@ -24,15 +25,27 @@ void ATank::AimAt(FVector HitLocation)
 void ATank::SetBarrelReference(UTankBarrel * BarrelToSet)
 {
 	AimingComponent->SetBarrelReference(BarrelToSet);
+	Barrel = BarrelToSet;
+}
+
+void ATank::TurretReference(UTankTurret * TurretToSet)
+{
+	AimingComponent->SetTurretlReference(TurretToSet);
+}
+
+void ATank::Fire()
+{
+	auto Time = GetWorld()->GetTimeSeconds();
+	UE_LOG(LogTemp, Warning, TEXT("At %f You Fired"), Time);
+ 
+
+	GetWorld()->SpawnActor<AProjectile>(ProjectileBlueprint,
+		Barrel->GetSocketLocation(FName("Fire")),
+		Barrel->GetSocketRotation(FName("Fire"))
+		);
 	
 }
 
-// Called when the game starts or when spawned
-void ATank::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
 
 // Called every frame
 void ATank::Tick(float DeltaTime)
