@@ -11,6 +11,7 @@
 	Super::Tick(DeltaTime);
 	// Aim At the Player Tank position
 	GetControlledTank()->AimAt(GetPlayerTank()->GetActorLocation());
+	GetControlledTank()->Fire();
 }
 
 ATank* AAiTankController:: GetControlledTank() {

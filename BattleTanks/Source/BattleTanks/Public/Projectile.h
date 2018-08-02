@@ -17,10 +17,10 @@ public:
 	AProjectile();
 
 
-	void LauchProjectile(float LauchSpeed);
+	void LauchProjectile(float Speed);
 
 private:
-	UMovementComponent * ProjectileMovement;
+	UProjectileMovementComponent * ProjectileMovement = nullptr;
 
 
 protected:

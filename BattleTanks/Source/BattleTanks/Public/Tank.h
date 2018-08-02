@@ -44,7 +44,7 @@ protected:
 
 
 private:
-	float LaunchSpeed = 1000000;
+	float LaunchSpeed = 8000;
   
 
 public:	
