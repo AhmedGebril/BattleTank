@@ -9,7 +9,7 @@
 void UTankTracks::SetThrottle(float Throttle) {
 
     auto name = GetName();
-	UE_LOG(LogTemp, Warning, TEXT(" %s You Pressed throttle %f"),*name,Throttle);
+	UE_LOG(LogTemp, Warning, TEXT(" %s Has A Value Of %f"),*name,Throttle);
 
 	auto AppliedForce = GetForwardVector()* Throttle *TrackMaxDrivingForce;
 	auto ForceLocation = GetComponentLocation();
