@@ -44,6 +44,7 @@ protected:
 
 
 private:
+	UPROPERTY(EditAnywhere, category = Setup)
 	float LaunchSpeed = 8000;
   
 
