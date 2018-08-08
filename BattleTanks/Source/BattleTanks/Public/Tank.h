@@ -3,7 +3,9 @@
 #pragma once
 #include "TankAimingComponent.h"
 #include "TankTurret.h"
+#include "TankMovementComponent.h"
 #include "TankBarrel.h"
+#include "TankTracks.h"
 #include "CoreMinimal.h"
 #include "Projectile.h"
 #include "GameFramework/Pawn.h"
@@ -28,6 +30,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Setup)
 		void TurretReference(UTankTurret* TurretToSet);
 
+	UFUNCTION(BlueprintCallable, Category = Setup)
+		void SetTracksReference(UTankTracks* RightTracks, UTankTracks* LeftTracks);
+
 	UPROPERTY(EditAnywhere, category = Setup)
 		TSubclassOf<AProjectile> ProjectileBlueprint;
 	
@@ -42,6 +47,9 @@ protected:
 
 	UTankBarrel* Barrel;
 
+	UTankMovementComponent* TrackMovement;
+
+	UTankTracks* Tracks;
 
 private:
 	UPROPERTY(EditAnywhere, category = Setup)

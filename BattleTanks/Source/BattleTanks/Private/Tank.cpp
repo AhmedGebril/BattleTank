@@ -33,6 +33,14 @@ void ATank::TurretReference(UTankTurret * TurretToSet)
 	AimingComponent->SetTurretlReference(TurretToSet);
 }
 
+void ATank::SetTracksReference(UTankTracks * RightTrackToSet, UTankTracks * LeftTrackToSet)
+{
+
+	TrackMovement->SetTracksReference(RightTrackToSet, LeftTrackToSet);
+
+
+}
+
 void ATank::Fire()
 {
 	

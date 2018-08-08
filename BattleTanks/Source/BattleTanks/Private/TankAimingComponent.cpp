@@ -52,14 +52,6 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	Turret->TurretRotate(DeltaRotator.Yaw);
 }
 
-void UTankAimingComponent::MoveTurretTowards(FVector AimDirection)
-{
-	auto AimTurretRotator = AimDirection.Rotation();
-
-
-}
-
-
 void UTankAimingComponent::SetBarrelReference(UTankBarrel * BarrelToSet)
 {
 	Barrel = BarrelToSet;
