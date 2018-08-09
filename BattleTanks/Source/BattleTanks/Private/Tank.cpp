@@ -43,15 +43,23 @@ void ATank::SetTracksReference(UTankTracks * RightTrackToSet, UTankTracks * Left
 
 void ATank::Fire()
 {
-	
-	auto Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileBlueprint,
-		Barrel->GetSocketLocation(FName("Fire")),
-		Barrel->GetSocketRotation(FName("Fire"))
-		);
-	
-	Projectile->LauchProjectile(LaunchSpeed);
-}
+	bool isReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
 
+	if ( isReloaded)
+	{
+		// Spawn a projectile at the socket location on the barrel
+		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
+			ProjectileBlueprint,
+			Barrel->GetSocketLocation(FName("Fire")),
+			Barrel->GetSocketRotation(FName("Fire"))
+			);
+
+		Projectile->LauchProjectile(LaunchSpeed);
+		LastFireTime = FPlatformTime::Seconds();
+		MaximumAmmo--;
+		UE_LOG(LogTemp, Warning, TEXT("%f left"), MaximumAmmo);	
+	}
+}
 
 // Called every frame
 void ATank::Tick(float DeltaTime)

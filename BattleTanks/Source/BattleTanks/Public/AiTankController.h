@@ -23,5 +23,5 @@ public:
 	virtual void Tick(float DeltaTime)override;
 	virtual void BeginPlay() override;
 	ATank * GetPlayerTank();
-
+	float  AcceptanceRadius = 300;
 };

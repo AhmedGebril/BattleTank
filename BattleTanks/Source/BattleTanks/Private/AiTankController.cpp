@@ -9,8 +9,15 @@
  void AAiTankController::Tick(float DeltaTime) {
 
 	Super::Tick(DeltaTime);
+
 	// Aim At the Player Tank position
 	GetControlledTank()->AimAt(GetPlayerTank()->GetActorLocation());
+
+	//Fire at The Player With A reloading time
+	
+
+	//Move To The Player
+	MoveToActor(GetPlayerTank(), AcceptanceRadius);
 	
 }
 

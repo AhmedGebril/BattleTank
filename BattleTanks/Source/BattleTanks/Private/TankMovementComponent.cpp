@@ -23,3 +23,10 @@ void  UTankMovementComponent::IntendToMoveRight(float Throw) {
 
 }
 
+void UTankMovementComponent::RequestDirectMove(const FVector & MoveVelocity, bool bForceMaxSpeed)
+{
+	auto TankForward = GetOwner()->GetActorForwardVector().GetSafeNormal();
+	auto AiIntendedForward = MoveVelocity.GetSafeNormal();
+
+}
+

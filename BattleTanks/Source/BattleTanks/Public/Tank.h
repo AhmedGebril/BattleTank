@@ -51,9 +51,15 @@ protected:
 
 	UTankTracks* Tracks;
 
+	double LastFireTime = 0;
+	float ReloadTimeInSeconds = 3;
+
 private:
 	UPROPERTY(EditAnywhere, category = Setup)
 	float LaunchSpeed = 8000;
+
+	UPROPERTY(EditAnywhere, category = Setup)
+	float MaximumAmmo = 100;
   
 
 public:	
